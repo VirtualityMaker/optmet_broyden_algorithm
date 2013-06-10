@@ -59,10 +59,13 @@ grad_f <- function(x)
   f_grad_values[[length(f_grad_values)+1]] = x
   assign("f_grad_values", f_grad_values, envir=.GlobalEnv)
   
+  h = 10^(-12)
+  
   #cat("Grad analytic calculation: ", real_grad_f_calculation_analytic(x), "\n")
   #cat("Grad difference scheme calculation: ", real_grad_f_calculation_backward_difference(x, 0.000001), "\n")
-  #value = real_grad_f_calculation_central_difference(x, 10^(-12))
-  value = real_grad_f_calculation_central_difference(x, 10^(-12))
+  value = real_grad_f_calculation_backward_difference(x, h)
+  #value = real_grad_f_calculation_central_difference(x, h)
+  #value = real_grad_f_calculation_forward_difference(x, h)
   #value = real_grad_f_calculation_analytic(x)
   
   return(value)

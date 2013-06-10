@@ -1,20 +1,28 @@
 svenn_algorithm <- function(func, start_point, step)
 {
+    start_point = c(start_point, func(start_point))
+  
     cat("Svenn's Algorithm report:\n")
     cat("Start point: ")
     print(start_point)
     cat("Start step: ")
     print(step)
     cat("\n")
-
-    start_point = c(start_point, func(start_point))
                     
     points <- list(start_point)
   
     a = c(start_point[1] - step, func(start_point[1] - step))
     b = c(start_point[1] + step, func(start_point[1] + step))
     
-    if (a[2] >= start_point[2] && b[2] >= start_point[2]) return(list(start_point, start_point))
+    if (a[2] >= start_point[2] && b[2] >= start_point[2]) {
+      cat("a: ")
+      print(a)
+      cat("\n")
+      cat("b: ")
+      print(b)
+      cat("\n")
+      return(list(start_point, start_point))
+    }
     
     step_mod = 2
 
